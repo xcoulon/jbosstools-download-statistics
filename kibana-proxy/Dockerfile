@@ -4,7 +4,7 @@ FROM centos:7
 MAINTAINER Xavier Coulon <xcoulon@redhat.com>
 
 # install wget and other tools to subsequent downloads/install
-RUN yum -y install wget tar java-1.7.0-openjdk.x86_64 maven
+RUN yum -y install wget tar git java-1.7.0-openjdk.x86_64 maven
 
 # Define commonly used JAVA_HOME variable
 ENV JAVA_HOME /usr/lib/jvm/java-1.7.0-openjdk
@@ -15,7 +15,8 @@ RUN wget --no-check-certificate https://download.elasticsearch.org/kibana/kibana
 # custom config.js to access elasticsearch
 ADD kibana-$KIBANA_VERSION/config.js /kibana-$KIBANA_VERSION/config.js
 
-ADD . /ekproxy
+# update the git submodule
+RUN cd ekproxy && git submodule init && git submodule update
 WORKDIR /ekproxy
 # build with maven using OpenShift profile to copy all dependencies in the target/dist folder
 RUN mvn -P openshift clean package
