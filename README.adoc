@@ -30,6 +30,24 @@ cd <path_to_base_directory>
 fig up
 ----
 
-Then open your browser at http://127.0.0.1:8080 to see access the Kibana landing page.
+The console should display a few lines of logs, the last one should be something like
+
+[code,logs]
+----
+elasticsearch_1 | [2015-01-20 10:32:05,323][INFO ][gateway                  ] [Iron Man] recovered [23] indices into cluster_state
+----
+
+The important element to check is the number of recovered indices (23), meaning that the data were successfully loaded in Elasticsearch.
+
+If you're using boot2docker, type the following command to retrieve the IP address of the VM running all docker containers:
+
+[code]
+----
+$>boot2docker ip
+
+The VM's Host only interface IP address is: 192.168.59.103
+---
+
+Then open your browser at http://192.168.59.103:8080 to see access the Kibana landing page.
 
 Enjoy!

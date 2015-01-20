@@ -15,8 +15,8 @@ RUN wget --no-check-certificate https://download.elasticsearch.org/kibana/kibana
 # custom config.js to access elasticsearch
 ADD kibana-$KIBANA_VERSION/config.js /kibana-$KIBANA_VERSION/config.js
 
-# update the git submodule
-RUN cd ekproxy && git submodule init && git submodule update
+# clone the git repo for the ekproxy
+RUN git clone https://github.com/xcoulon/ekproxy.git
 WORKDIR /ekproxy
 # build with maven using OpenShift profile to copy all dependencies in the target/dist folder
 RUN mvn -P openshift clean package

@@ -3,7 +3,7 @@ web:
   links:
     - elasticsearch
   ports:
-    - "127.0.0.1:8080:8080"
+    - "8080:8080"
   environment:
     REVERSE_PROXY_USERNAME: jbosstools
     REVERSE_PROXY_PASSWORD: werock2015
