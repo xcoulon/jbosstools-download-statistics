@@ -1,0 +1,3 @@
+[submodule "kibana-proxy/ekproxy"]
+	path = kibana-proxy/ekproxy
+	url = https://github.com/xcoulon/ekproxy.git
