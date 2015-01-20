@@ -383,3 +383,6 @@ path.logs: /logs
 # it unless you need it is recommended (it is disabled by default).
 #
 #http.jsonp.enable: true
+
+cluster.routing.allocation.disk.watermark.low: 1000mb
+cluster.routing.allocation.disk.watermark.high: 500mb
