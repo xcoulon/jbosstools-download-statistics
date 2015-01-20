@@ -1,0 +1,35 @@
+= Running Kibana and Elasticsearch on Docker (with Fig)
+
+== Installing Docker and Fig
+
+Reefer to the installation instructions on the http://www.fig.sh/install.html[Fig.sh website].
+
+== Building the Docker images
+
+[code,shell]
+----
+cd <path_to_base_directory>/elasticsearch
+docker build -t jbosstools/centos7-elasticsearch:1.4.2 .
+
+cd <path_to_base_directory>/kibana-front
+docker build -t jbosstools/centos7-kibana-proxy:1.0.0 .
+----
+
+== Installing the data
+
+Contact me to get the data (the Elasticsearch indexes) and put them in <path_to_base_directory>/data.
+
+== Running the containers with Fig
+
+Edit the <path_to_base_directory>/fig.yml file to adjust some settings:
+
+
+[code,shell]
+----
+cd <path_to_base_directory>
+fig up
+----
+
+Then open your browser at http://127.0.0.1:8080 to see access the Kibana landing page.
+
+Enjoy!

@@ -1,0 +1,15 @@
+web:
+  image: xcoulon/centos7-ekproxy:1.0.0
+  links:
+    - elasticsearch
+  ports:
+    - "8080:8080"
+  environment:
+    REVERSE_PROXY_USERNAME: jbosstools
+    REVERSE_PROXY_PASSWORD: werock2015
+
+elasticsearch:
+  image: xcoulon/centos7-elasticsearch:1.4.2
+  volumes:
+    - /Users/xcoulon/code/jbosstools/prototyping/download-statistics/elasticsearch/data/elasticsearch:/data/elasticsearch
+  
